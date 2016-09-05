@@ -4,14 +4,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="hu.hanprog.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.hanprog.MainController">
     <children>
-        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#getHTML" text="Button"/>
-        <HTMLEditor fx:id="htmlEditor"
-                    htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;"
-                    layoutX="14.0" layoutY="46.0" prefHeight="423.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0"/>
+        <Button fx:id="openExcel" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openExcelDialog" text="Excel megnyitása" />
+        <Button layoutX="140.0" layoutY="14.0" mnemonicParsing="false" onAction="#getHTML" text="Dolgozz!" />
+        <HTMLEditor fx:id="htmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="46.0" prefHeight="423.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
     </children>
 </AnchorPane>
