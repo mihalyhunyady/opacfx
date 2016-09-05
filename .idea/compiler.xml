@@ -21,6 +21,8 @@
     <bytecodeTargetLevel>
       <module name="DiffCalculator_main" target="1.8" />
       <module name="DiffCalculator_test" target="1.8" />
+      <module name="OpacFX_main" target="1.8" />
+      <module name="OpacFX_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

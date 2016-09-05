@@ -35,6 +35,10 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'org.jsoup:jsoup:1.9.2'
     compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
+    compile group: 'org.apache.poi', name: 'poi', version: '3.12'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
+
+
 
 }
 

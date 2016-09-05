@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/OpacFX.iml" filepath="$PROJECT_DIR$/.idea/modules/OpacFX.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OpacFX_main.iml" filepath="$PROJECT_DIR$/.idea/modules/OpacFX_main.iml" group="DiffCalculator" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OpacFX_test.iml" filepath="$PROJECT_DIR$/.idea/modules/OpacFX_test.iml" group="DiffCalculator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OpacFX_main.iml" filepath="$PROJECT_DIR$/.idea/modules/OpacFX_main.iml" group="OpacFX" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OpacFX_test.iml" filepath="$PROJECT_DIR$/.idea/modules/OpacFX_test.iml" group="OpacFX" />
     </modules>
   </component>
 </project>

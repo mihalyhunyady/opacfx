@@ -1,4 +1,4 @@
-package hu.hanprog
+package hu.hanprog.jsoup
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
