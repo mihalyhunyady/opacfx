@@ -61,7 +61,9 @@ class MainController : Initializable {
         for ((key, value) in result) {
             println("$key , $value")
         }
-
+        if (file != null) {
+            excelReader.writeToExcel(file, workbook, result)
+        }
     }
 
     private fun openFile(): File? {

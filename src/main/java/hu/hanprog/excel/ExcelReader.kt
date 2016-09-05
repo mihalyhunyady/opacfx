@@ -2,11 +2,8 @@ package hu.hanprog.excel
 
 import org.apache.poi.ss.format.CellFormatType
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.*
 
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.IOException
 import java.util.*
 
 class ExcelReader {
@@ -62,6 +59,26 @@ class ExcelReader {
             return dictionary
         }
         return null
+    }
+
+    fun writeToExcel(file: File, workbook: XSSFWorkbook, resultMap: Map<String, String>) {
+        val newRows = resultMap.keys
+        val sheet = workbook.getSheetAt(2)
+        var rowNum = sheet.lastRowNum
+
+        for (key in newRows) {
+            val row = sheet.createRow(rowNum++)
+            var cellNum = 0
+            val cell = row.createCell(cellNum++)
+
+            cell.setCellValue(key)
+            val cell2 = row.createCell(cellNum++)
+            cell2.setCellValue(resultMap[key])
+        }
+        var os = FileOutputStream(file);
+        workbook.write(os);
+        System.out.println("Writing on XLSX file Finished ...");
+
     }
 
     private fun convertToNonHungarianLetters(str: String): String {
