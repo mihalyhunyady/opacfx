@@ -33,7 +33,6 @@ class JsoupParser : Controller() {
 
     private fun searchForResult(dictionary: Map<String, String>?, resultMap: HashMap<String, String>, id: String, result: String) {
         if (!result.isEmpty()) {
-            println("ELEJE: $id -> $result")
             if (dictionary != null) {
                 for (key in dictionary.keys) {
                     if (key.contains(result)) {

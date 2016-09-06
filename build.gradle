@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'application'
-mainClassName = "hu.hanprog.Main"
+mainClassName = "hu.hanprog.OpacFxApp"
 
 repositories {
     mavenLocal()
@@ -40,12 +40,11 @@ dependencies {
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
 
 
-
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': 'hu.hanprog.Main'
+        attributes 'Main-Class': 'hu.hanprog.OpacFxApp'
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
