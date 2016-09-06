@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.hanprog.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Button fx:id="openExcel" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openExcelDialog" text="Excel megnyitása" />
-        <Button layoutX="140.0" layoutY="14.0" mnemonicParsing="false" onAction="#getHTML" text="Dolgozz!" />
+        <Button fx:id="excelButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="%open_excel" />
+        <Button fx:id="workButton" layoutX="140.0" layoutY="14.0" mnemonicParsing="false" text="%work" />
         <HTMLEditor fx:id="htmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="46.0" prefHeight="423.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
     </children>
 </AnchorPane>

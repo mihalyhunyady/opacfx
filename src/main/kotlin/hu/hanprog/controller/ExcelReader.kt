@@ -1,12 +1,14 @@
-package hu.hanprog.excel
+package hu.hanprog.controller
 
-import org.apache.poi.ss.format.CellFormatType
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.*
-
+import tornadofx.Controller
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
 import java.util.*
 
-class ExcelReader {
+class ExcelReader: Controller() {
     @Throws(IOException::class)
     fun openWorkBook(file: File?): XSSFWorkbook {
         val fIP = FileInputStream(file)

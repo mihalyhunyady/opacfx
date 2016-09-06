@@ -1,7 +1,7 @@
-package hu.hanprog
+package hu.hanprog.controller
 
-import hu.hanprog.excel.ExcelReader
-import hu.hanprog.jsoup.JsoupParser
+import hu.hanprog.controller.ExcelReader
+import hu.hanprog.controller.JsoupParser
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
 import javafx.scene.control.Button
@@ -9,6 +9,8 @@ import javafx.scene.web.HTMLEditor
 import javafx.stage.DirectoryChooser
 import javafx.stage.FileChooser
 import javafx.stage.Stage
+import tornadofx.Controller
+import tornadofx.FX
 import java.io.File
 
 import java.net.URL
@@ -17,47 +19,35 @@ import java.nio.file.Paths
 
 import java.util.ResourceBundle
 
-class MainController : Initializable {
+class MainController : Controller() {
 
-    @FXML
-    lateinit var htmlEditor: HTMLEditor
-    private var stage: Stage? = null
-
-    @FXML
-    lateinit var openExcel: Button
+    val excelReader: ExcelReader by inject()
+    val parser : JsoupParser by inject()
 
     var excelPath: String? = null
-    override fun initialize(location: URL?, resources: ResourceBundle?) {
 
-    }
-
-    @FXML
-    private fun openExcelDialog() {
-        getStage()
+    fun openExcelDialog() {
         val directoryChooser = FileChooser()
-        val selectedDirectory = directoryChooser.showOpenDialog(stage)
+        val selectedDirectory = directoryChooser.showOpenDialog(FX.primaryStage)
         if (selectedDirectory != null) {
             excelPath = selectedDirectory.absolutePath
         }
     }
 
-    @FXML
     fun getHTML() {
-        val excelReader = ExcelReader()
         val file = openFile()
         val workbook = excelReader.openWorkBook(file)
         val sys = excelReader.readIDs(workbook)
         val dictionary = excelReader.readDictionary(workbook)
-        val parser = JsoupParser(dictionary)
+        val result = mutableMapOf<String, String>()
         for (id in sys) {
             try {
-                parser.start(id.split(".")[0])
+                result += parser.parse(dictionary, id.split(".")[0])
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            Thread.sleep(300)
+            Thread.sleep(300)//FIXME Thread.sleep in FX Main Thread? o.o
         }
-        val result = parser.resultMap
         for ((key, value) in result) {
             println("$key , $value")
         }
@@ -73,10 +63,4 @@ class MainController : Initializable {
             return null
         }
     }
-
-
-    private fun getStage() {
-        stage = openExcel.scene.window as Stage
-    }
-
 }
