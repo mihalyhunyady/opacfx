@@ -20,6 +20,7 @@ class ExcelReader : Controller() {
                 println("Error to open openworkbook.xlsx file.")
             }
         }
+        fIP.close()
         return workbook
     }
 
@@ -32,8 +33,10 @@ class ExcelReader : Controller() {
                 val row = rowIterator.next()
                 val cell = row.getCell(0)
                 try {
-                    sysIdArray.add("${cell.numericCellValue}")
-                    println("${cell.numericCellValue}")
+                    if (cell.numericCellValue != 0.0) {
+                        sysIdArray.add("${cell.numericCellValue}")
+                        println("${cell.numericCellValue}")
+                    }
                 } catch (e: IllegalStateException) {
                     //nothing to do here
                 }
@@ -77,8 +80,9 @@ class ExcelReader : Controller() {
             val cell2 = row.createCell(cellNum++)
             cell2.setCellValue(resultMap[key])
         }
-        var os = FileOutputStream(file);
-        workbook.write(os);
+        val os = FileOutputStream(file)
+        workbook.write(os)
+        os.close()
         System.out.println("Writing on XLSX file Finished ...");
 
     }

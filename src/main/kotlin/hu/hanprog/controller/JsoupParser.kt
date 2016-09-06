@@ -25,8 +25,8 @@ class JsoupParser : Controller() {
                 searchForResult(dictionary, resultMap, id, res.split("(")[0].trimStart().trimEnd())
             }
         } else {
-            resultMap.put(id, "Nem talalt ($result)")
-            println("$id -> Nem talalt ($result)")
+            resultMap.put(id, "Üres")
+           // println("$id -> Üres")
         }
         return resultMap
     }
@@ -37,12 +37,12 @@ class JsoupParser : Controller() {
                 for (key in dictionary.keys) {
                     if (key.contains(result) || result.contains(key)) {
                         resultMap.put(id, dictionary[key].toString())
-                        println("$id -> ${dictionary[key].toString()}")
+                      //  println("$id -> ${dictionary[key].toString()}")
                         return
                     }
                 }
-                resultMap.put(id, "Nem talalt ($result)")
-                println("$id -> Nem talalt ($result)")
+                resultMap.put(id, "Nem azonosithato ($result)")
+              //  println("$id -> Nem azonosithato ($result)")
             }
         }
     }

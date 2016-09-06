@@ -7,6 +7,8 @@ import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.stage.FileChooser
+import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import tornadofx.Controller
 import tornadofx.FX
 import tornadofx.success
@@ -22,6 +24,7 @@ class MainController : Controller() {
     val view: MainView by inject()
     var excelPath: String? = null
 
+
     fun openExcelDialog() {
         val directoryChooser = FileChooser()
         val selectedDirectory = directoryChooser.showOpenDialog(FX.primaryStage)
@@ -36,39 +39,51 @@ class MainController : Controller() {
         val sys = excelReader.readIDs(workbook)
         val dictionary = excelReader.readDictionary(workbook)
         val result = mutableMapOf<String, String>()
+        val unsuccessfullIds = mutableListOf<String>()
         task {
             for (id in sys) {
                 try {
-                    searchForLibrary(dictionary, id, result)
+                    if (!id.equals("0")) {
+                        searchForLibrary(dictionary, id, result)
+                    }
                 } catch (e: Exception) {
-                    searchForLibrary(dictionary, id, result)
                     e.printStackTrace()
+                    println("Nem sikerült: $id")
+                    unsuccessfullIds.add(id)
                 }
-                //   Thread.sleep(300)
+                //Thread.sleep(1)
             }
         } success {
-            addToLogs(result)
             if (file != null) {
                 excelReader.writeToExcel(file, workbook, result)
+            }
+            println("Nem sikerültek: ")
+            for (id in unsuccessfullIds) {
+                println("id")
             }
         }
     }
 
     private fun addToLogs(result: MutableMap<String, String>) {
         Platform.runLater {
-            items.clear()
-            for ((key, value) in result) {
-                println("$key , $value")
-
-                items.add("$key , $value")
-                view.logs.refresh()
-            }
+            // items.clear()
+            // for ((key, value) in result) {
+            // println("$key , $value")
+            items.add("${result.keys.last()},${result[result.keys.last()]}")
+            view.logs.refresh()
+            //}
         }
     }
 
     private fun searchForLibrary(dictionary: Map<String, String>?, id: String, result: MutableMap<String, String>) {
-        result += parser.parse(dictionary, id.split(".")[0])
-        addToLogs(result)
+        try {
+            result += parser.parse(dictionary, id.split(".")[0])
+            addToLogs(result)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
     }
 
     private fun openFile(): File? {

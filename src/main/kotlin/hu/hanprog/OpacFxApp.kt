@@ -2,6 +2,7 @@ package hu.hanprog
 
 import hu.hanprog.view.MainView
 import javafx.application.Application
+import javafx.event.EventHandler
 import javafx.stage.Stage
 import tornadofx.App
 import tornadofx.FX
@@ -23,5 +24,10 @@ class OpacFxApp : App(MainView::class) {
         val css = cssResource.toExternalForm()
         FX.primaryStage.scene.stylesheets.clear()
         FX.primaryStage.scene.stylesheets.add(css)
+
+        FX.primaryStage.onCloseRequest = EventHandler {
+            println("Exit")
+            System.exit(0)
+        }
     }
 }
