@@ -6,8 +6,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Button fx:id="excelButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="%open_excel" />
-        <Button fx:id="workButton" layoutX="140.0" layoutY="14.0" mnemonicParsing="false" text="%work" />
+        <Button fx:id="excelButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="%open_excel" />
+        <Button fx:id="workButton" layoutX="174.0" layoutY="14.0" mnemonicParsing="false" text="%work" />
       <ListView fx:id="logs" layoutX="14.0" layoutY="67.0" prefHeight="407.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.0" />
     </children>
 </AnchorPane>

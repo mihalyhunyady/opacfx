@@ -51,7 +51,7 @@ class MainController : Controller() {
                     println("Nem sikerült: $id")
                     unsuccessfullIds.add(id)
                 }
-                //Thread.sleep(1)
+                Thread.sleep(500)
             }
         } success {
             if (file != null) {

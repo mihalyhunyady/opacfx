@@ -77,7 +77,7 @@ class ExcelReader : Controller() {
             val cell = row.createCell(cellNum++)
 
             cell.setCellValue(key)
-            val cell2 = row.createCell(cellNum++)
+            val cell2 = row.createCell(cellNum)
             cell2.setCellValue(resultMap[key])
         }
         val os = FileOutputStream(file)
