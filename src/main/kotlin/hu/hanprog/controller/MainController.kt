@@ -1,18 +1,25 @@
 package hu.hanprog.controller
 
 
+import com.google.common.collect.Collections2
+import hu.hanprog.view.MainView
+import javafx.application.Platform
+import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import javafx.stage.FileChooser
 import tornadofx.Controller
 import tornadofx.FX
 import tornadofx.success
 import tornadofx.task
 import java.io.File
+import java.util.*
 
 class MainController : Controller() {
 
     val excelReader: ExcelReader by inject()
     val parser: JsoupParser by inject()
-
+    val items: ObservableList<String> = FXCollections.observableArrayList()
+    val view: MainView by inject()
     var excelPath: String? = null
 
     fun openExcelDialog() {
@@ -37,20 +44,31 @@ class MainController : Controller() {
                     searchForLibrary(dictionary, id, result)
                     e.printStackTrace()
                 }
-                Thread.sleep(300)
+                //   Thread.sleep(300)
             }
-        } success  {
-            for ((key, value) in result) {
-                println("$key , $value")
-            }
+        } success {
+            addToLogs(result)
             if (file != null) {
                 excelReader.writeToExcel(file, workbook, result)
             }
         }
     }
 
+    private fun addToLogs(result: MutableMap<String, String>) {
+        Platform.runLater {
+            items.clear()
+            for ((key, value) in result) {
+                println("$key , $value")
+
+                items.add("$key , $value")
+                view.logs.refresh()
+            }
+        }
+    }
+
     private fun searchForLibrary(dictionary: Map<String, String>?, id: String, result: MutableMap<String, String>) {
         result += parser.parse(dictionary, id.split(".")[0])
+        addToLogs(result)
     }
 
     private fun openFile(): File? {

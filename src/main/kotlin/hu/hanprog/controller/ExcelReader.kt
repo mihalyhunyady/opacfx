@@ -8,7 +8,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-class ExcelReader: Controller() {
+class ExcelReader : Controller() {
     @Throws(IOException::class)
     fun openWorkBook(file: File?): XSSFWorkbook {
         val fIP = FileInputStream(file)
@@ -84,24 +84,24 @@ class ExcelReader: Controller() {
     }
 
     private fun convertToNonHungarianLetters(str: String): String {
-        val nStr = str.replace("á", "??")
-                .replace("é", "?è")
-                .replace("ű", "??")
-                .replace("ú", "??")
-                .replace("ő", "??")
-                .replace("ó", "??")
-                .replace("ü", "??")
-                .replace("ö", "??")
-                .replace("í", "??")
-                .replace("Á", "??")
-                .replace("É", "??")
-                .replace("Ű", "??")
-                .replace("Ú", "??")
-                .replace("Ő", "??")
-                .replace("Ó", "??")
-                .replace("Ü", "??")
-                .replace("Ö", "??")
-                .replace("Í", "??")
-        return nStr
+        /*  val nStr = str.replace("á", "??")
+                  .replace("é", "?è")
+                  .replace("ű", "??")
+                  .replace("ú", "??")
+                  .replace("ő", "??")
+                  .replace("ó", "??")
+                  .replace("ü", "??")
+                  .replace("ö", "??")
+                  .replace("í", "??")
+                  .replace("Á", "??")
+                  .replace("É", "??")
+                  .replace("Ű", "??")
+                  .replace("Ú", "??")
+                  .replace("Ő", "??")
+                  .replace("Ó", "??")
+                  .replace("Ü", "??")
+                  .replace("Ö", "??")
+                  .replace("Í", "??")*/
+        return str
     }
 }

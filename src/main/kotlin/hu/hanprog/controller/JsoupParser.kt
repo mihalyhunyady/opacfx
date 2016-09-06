@@ -35,7 +35,7 @@ class JsoupParser : Controller() {
         if (!result.isEmpty()) {
             if (dictionary != null) {
                 for (key in dictionary.keys) {
-                    if (key.contains(result)) {
+                    if (key.contains(result) || result.contains(key)) {
                         resultMap.put(id, dictionary[key].toString())
                         println("$id -> ${dictionary[key].toString()}")
                         return
